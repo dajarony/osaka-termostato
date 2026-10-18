@@ -31,7 +31,27 @@ async function main(){
  assert.equal(await evalJS("document.querySelector('#screenLabel').textContent"),'SLS · EDITANDO','SET corto no abrió valor');
  await hold('POWER',2100);
  assert.ok((await evalJS("document.querySelector('#screenLabel').textContent")).includes('Pr1'),'Botón superior no salió del menú');
+ assert.ok((await evalJS("document.querySelector('.header-guide-link')?.getAttribute('href')")).includes('guia-botones.html'),'Enlace de guía ausente arriba del simulador');
+ await send('Page.enable');
+ await send('Page.navigate',{url:'file://'+realpathSync(path.join(__dirname,'..','guia-botones.html'))});
+ for(let i=0;i<50;i++){try{if(await evalJS("Boolean(window.F30?.guide?.recipes?.length===8 && document.querySelectorAll('.recipe-item').length===8)"))break;}catch(e){}await sleep(150);}
+ assert.equal(await evalJS("document.querySelectorAll('.recipe-item').length"),8,'Guía: recetas no cargadas');
+ assert.equal(await evalJS("document.querySelectorAll('#param-select option').length"),72,'Guía: buscador incompleto');
+ assert.equal(await evalJS("document.querySelector('#recipe-title').textContent"),'Iniciar desescarche manual');
+ assert.ok((await evalJS("document.querySelector('#steps').textContent")).includes('Mantén ▲ durante 5 segundos'),'Falta combinación manual');
+ assert.equal(await evalJS("document.querySelector('a[href=\"./index.html\"]')!==null"),true,'Falta regreso al simulador');
+ assert.equal(await evalJS("window.F30.guide.route('SLS','ddi').times"),Math.min(
+   await evalJS("window.F30.catalog.byCode.ddi.id-1"),
+   await evalJS("72-(window.F30.catalog.byCode.ddi.id-1)")
+ ),'Los toques breves deben calcularse desde el catálogo');
+ await evalJS("document.querySelector('[data-recipe=desescarche-automatico]').click()");
+ assert.ok((await evalJS("document.querySelector('#recipe-title').textContent")).includes('Automático'),'No se abre receta de desescarche automático');
+ assert.ok((await evalJS("document.querySelector('#steps').textContent")).includes('ddi = -5'),'No aparece el intervalo de cinco minutos');
+ await evalJS("document.querySelector('#step-next').click()");
+ assert.ok((await evalJS("document.querySelector('#step-count').textContent")).startsWith('2 de'),'No avanza la guía');
+ await evalJS("document.querySelector('#param-search').value='dtd';document.querySelector('#param-search').dispatchEvent(new Event('input',{bubbles:true}))");
+ assert.equal(await evalJS("document.querySelectorAll('#param-select option').length"),1,'Buscador no filtra el código dtd');
  assert.deepEqual(errors,[],'Excepciones JS en el navegador');
- console.log('E2E F30: 72 códigos, 14 ejercicios, cuatro teclas y pulsaciones reales OK');
+ console.log('E2E F30: panel y página guía (8 recetas, 72 rutas, desescarche y navegación) OK');
 }
 main().then(()=>{ws?.close();proc.kill();}).catch(e=>{console.error(e);ws?.close();proc.kill();process.exitCode=1;});
