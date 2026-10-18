@@ -28,8 +28,7 @@ class Panel {
    return;
   }
   if(this.mode==='browse'){
-   if(key==='UP')this.index=(this.index+1)%catalog.defs.length;
-   if(key==='DOWN')this.index=(this.index-1+catalog.defs.length)%catalog.defs.length;
+   if(key==='UP'||key==='DOWN'){const times=seconds>=.5?Math.min(72,1+Math.floor((seconds-.35)*19)):1;const sign=key==='UP'?1:-1;this.index=(this.index+sign*times+catalog.defs.length*72)%catalog.defs.length;}
    if(key==='SET'){this.current=this.code();this.draft=this.plant.p[this.current];this.mode='edit';this.note=this.current+': modifica y confirma con SET';}
    return;
   }
