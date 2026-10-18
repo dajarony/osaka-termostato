@@ -26,3 +26,9 @@
 2. Comparar cada uno de los 72 rangos/opciones y defaults con versión exacta de firmware.
 3. Implementar nuevas familias con contratos/test de regresión.
 4. Ejecutar E2E de pulsación larga en Chrome/móvil y contraste en hardware antes de declarar fidelidad plena.
+
+## Guía de botonera añadida
+- `guia-botones.html` + `src/ui/guide.js` + `src/ui/guide.css`: página independiente, 8 recetas guiadas, visualización de la tecla que toca pulsar, duración y código de pantalla, búsqueda de los 72 parámetros con distancia de flechas calculada desde `SLS`.
+- Enlace prominente sobre la pantalla principal.
+- E2E en Chrome: comprueba enlace superior, cargas de recetas, recorrido de pasos, búsquedas y navegación.
+- La guía corresponde a la máquina de estados del **simulador** y no está certificada contra hardware de todas las revisiones de firmware.
