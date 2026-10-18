@@ -4,6 +4,8 @@ Laboratorio educativo del Osaka F30 sobre una **cámara frigorífica de referenc
 Interfaz en español, tres sondas, tres relés, modelo térmico determinista, averías,
 parámetros, 14 ejercicios y diagnóstico por eventos. No controla equipos reales.
 
+**Abrir e instalar en el móvil:** https://dajarony.github.io/osaka-termostato/
+
 ![Laboratorio de escritorio](docs/evidencias/desktop.png)
 
 ## Ejecutar
@@ -53,6 +55,12 @@ solo cuando lo solicitas. No hay simulación en segundo plano.
 para instalar desde el teléfono. Se necesita una publicación HTTPS; HTTP sobre la red
 local permite una vista web, pero no ofrece las garantías de instalación/offline.
 La configuración se ha probado con móvil emulado; falta validar instalación en dispositivos físicos.
+
+Publicación actual: GitHub Pages desde la rama `gh-pages`, distribución de `e8dec7e`.
+La propuesta de código sigue en `feat/sume-simulator` (PR #1); no se ha fusionado en main.
+Los cambios en la rama de código no se publican automáticamente: hay que construir,
+verificar y actualizar la distribución de `gh-pages`. `deployment.json` identifica
+la revisión servida. Evidencia de la URL real en `docs/evidencias/live-pwa.json`.
 
 ## Verificar y construir
 

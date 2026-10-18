@@ -33,7 +33,8 @@ ECA-INFORME.md. Sus regresiones pasan. No se afirma ausencia absoluta de defecto
   conserva la evidencia de la entrega inicial; pwa.json recoge la ampliación móvil.
 - No hay backend, cuentas, credenciales, servicios externos ni hardware que desplegar.
 - PWA construida con caché de versión por ámbito, instalación y actualización
-  manual. Recarga offline verificada en producción; publicación HTTPS pendiente.
+  manual. Publicación HTTPS autorizada y realizada en GitHub Pages, con recarga
+  offline y operación táctil comprobadas en la URL real. Ver evidencias/live-pwa.json.
 
 ## Skills aplicadas y límites
 

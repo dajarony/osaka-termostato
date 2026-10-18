@@ -63,3 +63,17 @@ se corrigió la búsqueda del caché y se repitió con la misma expectativa.
 **Límites:** pruebas en Edge/Chromium con móvil emulado; no instalación física en iOS/Android.
 Publicación HTTPS todavía pendiente. El informe de comparación externa conserva R1/R2 abiertos.
 **Autor:** Codex.
+
+## 2026-10-18 — Publicación HTTPS autorizada
+
+**Autorización:** usuario responde «Sí, publicar en GitHub Pages».
+**Entrega:** https://dajarony.github.io/osaka-termostato/; fuente e8dec7e,
+distribución 79cdcdb en gh-pages. No se fusiona el PR ni se cambia main.
+**Verificación:** Pages built, HTTPS activo, HTTP 200. Navegador Edge con Pixel 7
+emulado: edición táctil, persistencia, recarga con red deshabilitada, avance de
+60 segundos y cuatro pestañas offline; sin excepciones JavaScript.
+**Evidencia:** docs/evidencias/live-pwa.json y mobile-live.png.
+**Archivos de seguimiento:** README, STATUS y auditoría actualizados.
+**Límites:** instalación en teléfono físico todavía no observada; actualizaciones
+de gh-pages mediante compilación/verificación y publicación explícita.
+**Autor:** Codex.
