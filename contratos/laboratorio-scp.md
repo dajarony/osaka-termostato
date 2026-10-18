@@ -7,7 +7,7 @@ Salidas: contrato SCP con trece secciones.
 # P1 · Laboratorio F30
 status: Draft
 route: /
-version: 1.0.0
+version: 1.1.0
 
 ## 1. Objetivo
 Operar y observar una cámara frigorífica de referencia.
@@ -23,6 +23,8 @@ Inicial → listo; listo en pausa/marcha; standby; diálogo; error recuperable.
 Snapshot de sesión, catálogo, estado de filtros, aviso de almacenamiento y reto activo.
 ## 7. Componentes
 Cabecera, navegación, controlador, cámara SVG, gráfica, sondas, parámetros, retos, bitácora.
+En móvil: navegación inferior fija, mando de tiempo accesible y controlador antes de métricas.
+Instalación y disponibilidad offline según [contrato móvil](movil-pwa.md).
 ## 8. Acciones
 Reproducir/pausar, velocidad, +1 s/+1 min, reset, power, desescarche, modo,
 puerta, sonda, avería, ambiente, editar, importar/exportar, reto/comprobar y reconocer alarma.
@@ -38,6 +40,7 @@ Temperaturas, relés, motivos de bloqueo, fase, alarmas y tendencias sincronizad
 ## 13. Pruebas
 Arranque, edición inválida/válida, sondas, ciclo manual, persistencia, navegación,
 teclado, móvil sin desbordamiento y cero errores de consola.
+Producción offline, objetivos táctiles de 44 px, signo/oF y diálogo en horizontal.
 
 ## Decisiones y estado
 2026-10-18: Draft técnico implementable bajo la solicitud explícita del sistema completo.

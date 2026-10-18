@@ -29,6 +29,31 @@ La configuración y los retos superados se guardan localmente. Exportar/importar
 trasladarlos mediante JSON versión 3. Si el navegador impide guardar, se muestra un aviso.
 El sonido es opcional y se habilita mediante la casilla del controlador.
 
+## Usar desde el móvil e instalar
+
+La interfaz móvil tiene navegación inferior, controles táctiles de 44 px, reloj
+accesible desde cualquier sección y botones para cambiar signo o seleccionar `oF`.
+Todo el laboratorio se maneja desde la pantalla táctil.
+
+Construye con `npm run build` y sirve **todo `dist/` por HTTPS**, incluida su subcarpeta
+`assets/`, `icons/`, el manifiesto y `sw.js`. Las rutas relativas admiten GitHub Pages
+en `/osaka-termostato/`. `npm run dev` no instala el service worker.
+
+1. Abre la URL HTTPS en el teléfono y espera **Disponible sin conexión**.
+2. Android: pulsa **Instalar app** o usa la opción de instalación del navegador.
+3. iPhone/iPad: abre en Safari → Compartir → Añadir a pantalla de inicio.
+4. Después de la primera carga puedes reabrir, ajustar parámetros y practicar sin red.
+
+Los ajustes y retos pertenecen al navegador/dispositivo; exporta una copia para trasladarlos.
+El reloj se pausa al ocultar la app. Al cerrarla o actualizarla se reinicia la sesión
+térmica, conservando ajustes y retos. **Actualizar app** aplica una nueva versión
+solo cuando lo solicitas. No hay simulación en segundo plano.
+
+`127.0.0.1` apunta al dispositivo que abre la dirección: el enlace del PC no sirve
+para instalar desde el teléfono. Se necesita una publicación HTTPS; HTTP sobre la red
+local permite una vista web, pero no ofrece las garantías de instalación/offline.
+La configuración se ha probado con móvil emulado; falta validar instalación en dispositivos físicos.
+
 ## Verificar y construir
 
 ```sh
@@ -46,6 +71,8 @@ con `npx playwright install chromium` (en CI se instalan también sus dependenci
 `dist/` es la distribución estática, sin servicios externos en ejecución y con rutas relativas.
 Puede servirse desde una subcarpeta; no abrir index.html mediante file:// porque usa módulos ESM.
 El workflow de GitHub verifica arquitectura, formato, lógica, build y navegador en cada cambio.
+Las pruebas UI construyen producción y usan el puerto 4174; mantienen separado el servidor
+de desarrollo de la copia instalable y verifican también la recarga sin conexión.
 
 ## SUME + STDG
 

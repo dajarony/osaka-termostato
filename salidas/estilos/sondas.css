@@ -28,7 +28,7 @@ Salidas: reglas CSS del componente.
 }
 .probe-controls {
   display: grid;
-  grid-template-columns: 1fr 75px 90px;
+  grid-template-columns: 1fr 75px 44px 100px;
   align-items: center;
   gap: 10px;
   margin-top: 10px;

@@ -16,10 +16,10 @@ La fidelidad extendida C3/RTC/ddd queda pendiente; ver docs/COBERTURA.md.
 - [x] 9. Pruebas y ECA del alcance documentado
 
 ## Puerta de verificación
-- `npm run check`: 60 archivos SUME, 72 parámetros, dominio puro, sin ciclos, mapa sincronizado.
+- `npm run check`: 65 archivos SUME, 72 parámetros, dominio puro, sin ciclos, mapa sincronizado.
 - `npm run format:check`: formato correcto.
 - `npm test`: 84/84, cero fallidos; 70 corresponden al banco ECA.
-- `npm run test:ui`: 12/12, escritorio y móvil emulado en Edge/Chromium.
+- `npm run test:ui`: 18 aprobadas y 2 omitidas por ser exclusivas de móvil en el proyecto escritorio; 0 fallos. Producción, móvil táctil y recarga offline en Edge/Chromium.
 - `npm run build`: correcto; salida estática en dist/.
 - `git diff --check`: correcto.
 
@@ -35,3 +35,4 @@ aprobaciones humanas ni ejecuciones históricas separadas para cada fase.
 | 2026-10-18 | 5–6 | Codex | Dominio, planta y persistencia verificados por 84 pruebas; cinco regresiones ECA reproducidas y corregidas. |
 | 2026-10-18 | 7–9 | Codex | Presentación y alcance documentado cerrados con check, formato, build y 12 pruebas UI. Capturas revisadas. Fidelidad extendida pendiente explícita. |
 | 2026-10-18 | Entrega | Codex | Commit 93b4d0f publicado en feat/sume-simulator; PR #1 en borrador. CI 39089734121 completa correctamente instalación, análisis, formato, 84 tests, build y 12 UI en Linux/Chromium. |
+| 2026-10-18 | Móvil / PWA | Codex | Navegación inferior, áreas táctiles, edición de signo/oF, manifiesto y caché offline. 84 pruebas de lógica y 18 UI correctas; 2 casos solo móviles se omiten en escritorio. Publicación HTTPS e instalación en móvil físico pendientes. |

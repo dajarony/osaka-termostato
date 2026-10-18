@@ -11,6 +11,9 @@ Base: `0c3f30d`. Fecha: 2026-10-18. Alcance: implementación local de la cámara
 - P2 de validación física: coeficientes de referencia; falta calibración con una instalación
   real si se quisiera convertir la herramienta en gemelo de un equipo concreto.
 - P2 de portabilidad: móvil emulado con Chromium; Safari físico no probado.
+- Revisión externa R1/R2: pérdida de la condición de fin y cambio de tipo durante
+  desescarche, reproducidos y abiertos en COMPARACION-REPOS.md. No se atribuye aún
+  su política al F30 real.
 
 ## Hallazgos corregidos
 
@@ -25,8 +28,12 @@ ECA-INFORME.md. Sus regresiones pasan. No se afirma ausencia absoluta de defecto
 - Configuración/progreso versionados; importación completa previa a aplicación; errores IO visibles.
 - Dominio sin DOM/red/Storage/reloj real. Dependencias directas explícitas, sin ciclos.
 - Mapa generado desde fuentes; DOCBLOCKs comprobados; registro de cambios acumulativo.
-- Pruebas observables: 84 Node, 12 UI; todos pasan. Check, formato y build correctos.
+- Pruebas observables actuales: 84 Node y 18 UI pasan; 2 casos táctiles se omiten
+  en escritorio. Check, formato y build correctos. El resumen original de 12 UI
+  conserva la evidencia de la entrega inicial; pwa.json recoge la ampliación móvil.
 - No hay backend, cuentas, credenciales, servicios externos ni hardware que desplegar.
+- PWA construida con caché de versión por ámbito, instalación y actualización
+  manual. Recarga offline verificada en producción; publicación HTTPS pendiente.
 
 ## Skills aplicadas y límites
 

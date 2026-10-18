@@ -22,7 +22,9 @@ export function mount(root) {
   </aside><main class="workspace">
     <div class="topline"><span class="breadcrumb">ESPACIO DE TRABAJO / <b>OSAKA F30</b></span><span class="mono"><span class="status-dot"></span> LOCAL <span id="session-clock">00:00:00</span></span></div>
     <header class="heading"><div><div class="eyebrow">APRENDER HACIENDO</div><h1>El frío, bajo tu control.</h1><p>Explora la cámara, ajusta el regulador y observa cómo responde el sistema.</p></div><div class="toolbar"><button class="btn" data-action="export">↓ Exportar</button><button class="btn" data-action="import">↑ Importar</button><input type="file" id="import-file" accept="application/json,.json" hidden></div></header>
+    <div id="install-panel"></div>
     <div id="notice" class="notice" role="status" aria-live="polite" hidden></div><div id="active-banner" class="active-banner" hidden></div>
+    <section class="session-controls" aria-label="Control del tiempo"><div class="toolbar"><button class="btn primary" id="play">▶ Iniciar</button><select id="speed" aria-label="Velocidad de simulación"><option value="1">1× real</option><option value="10">10×</option><option value="60" selected>60×</option><option value="300">300×</option></select><button class="btn small" id="step-second">+1 s</button><button class="btn small" id="step-minute">+1 min</button><button class="btn small" id="reset">↺ Reiniciar</button></div></section>
     <section id="view-lab" role="tabpanel" aria-labelledby="tab-lab">
       <div class="metrics">
         <div class="metric"><span class="eyebrow">TEMPERATURA DE CÁMARA</span><strong><span id="metric-air">20,0</span> <small>°C</small></strong><span class="caption" id="metric-air-note">Pr1 · lectura de control</span></div>
@@ -37,7 +39,7 @@ export function mount(root) {
         </section>
       </div><div class="lower-grid">${panel('03', 'Tres puntos de vista', 'MEDICIÓN Y AVERÍAS', 'probes', 'NTC')}
         <section class="panel"><div class="panel-head"><div><div class="eyebrow">04 / TELEMETRÍA</div><h2>La historia de la temperatura</h2></div><span class="badge">°C</span></div><div id="chart"></div>
-          <div class="toolbar" style="margin-top:18px"><button class="btn primary" id="play">▶ Iniciar</button><select id="speed" aria-label="Velocidad de simulación"><option value="1">1× real</option><option value="10">10×</option><option value="60" selected>60×</option><option value="300">300×</option></select><button class="btn small" id="step-second">+1 s</button><button class="btn small" id="step-minute">+1 min</button><button class="btn small" id="reset">↺ Reiniciar</button></div><p class="muted" style="font-size:10px;margin-top:10px">El reloj se pausa al ocultar esta pestaña.</p>
+          <p class="muted" style="font-size:12px;margin-top:10px">El reloj se pausa al ocultar esta pestaña o bloquear el móvil.</p>
         </section></div>
     </section>
     ${tabs

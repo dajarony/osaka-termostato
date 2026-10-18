@@ -10,9 +10,19 @@ export function mountProbes(root, dispatch) {
   root.innerHTML = names
     .map(
       (name, i) =>
-        `<div class="probe"><div class="probe-head"><span><b>Pr${i + 1}</b> · ${name}</span><strong id="reading-pr${i + 1}"></strong></div><div class="probe-controls"><input aria-label="Deslizador Pr${i + 1}" type="range" data-probe="pr${i + 1}" min="-50" max="80" step="0.1"><input aria-label="Temperatura Pr${i + 1}" type="number" data-probe="pr${i + 1}" min="-50" max="80" step="0.1"><select aria-label="Avería Pr${i + 1}" data-fault="pr${i + 1}"><option value="none">Sin avería</option><option value="open">Abierta E${i + 1}</option><option value="short">Corto -E${i + 1}</option></select></div></div>`,
+        `<div class="probe"><div class="probe-head"><span><b>Pr${i + 1}</b> · ${name}</span><strong id="reading-pr${i + 1}"></strong></div><div class="probe-controls"><input aria-label="Deslizador Pr${i + 1}" type="range" data-probe="pr${i + 1}" min="-50" max="80" step="0.1"><input aria-label="Temperatura Pr${i + 1}" type="number" inputmode="decimal" data-probe="pr${i + 1}" min="-50" max="80" step="0.1"><button class="btn small" aria-label="Cambiar signo Pr${i + 1}" data-sign="pr${i + 1}">±</button><select aria-label="Avería Pr${i + 1}" data-fault="pr${i + 1}"><option value="none">Sin avería</option><option value="open">Abierta E${i + 1}</option><option value="short">Corto -E${i + 1}</option></select></div></div>`,
     )
     .join('');
+  root.querySelectorAll('[data-sign]').forEach((button) => {
+    button.onclick = () => {
+      const input = root.querySelector(`input[type="number"][data-probe="${button.dataset.sign}"]`);
+      dispatch({
+        type: 'probe',
+        probe: button.dataset.sign,
+        value: input.value === '' ? NaN : -Number(input.value),
+      });
+    };
+  });
   root.querySelectorAll('[data-probe]').forEach(
     (input) =>
       (input.onchange = () =>

@@ -11,6 +11,7 @@ import { createKeypad } from './teclado.js';
 import { createNavigation } from './navegacion.js';
 import { createFiles } from './archivos.js';
 import { bindInteractions } from './interacciones.js';
+import { createInstallation } from './instalacion.js';
 import { mount } from '../salidas/estructura.js';
 import { mountController } from '../salidas/controlador.js';
 import { mountProbes } from '../salidas/sondas.js';
@@ -20,6 +21,7 @@ import { createRenderer } from '../salidas/pantalla.js';
 import { createSound } from '../salidas/sonido.js';
 export function bootstrap(root) {
   mount(root);
+  const installation = createInstallation(root.querySelector('#install-panel'));
   const notice = (message) => {
     const n = root.querySelector('#notice');
     n.textContent = message;
@@ -110,6 +112,7 @@ export function bootstrap(root) {
       clock.shutdown();
       session.shutdown();
       sound.shutdown();
+      installation.shutdown();
     },
   };
 }

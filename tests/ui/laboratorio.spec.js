@@ -82,6 +82,7 @@ test('teclado tEd, contraseña y reloj reproducible', async ({ page }) => {
     ['tPP', '123'],
   ]) {
     await page.getByRole('button', { name: `Editar ${code}`, exact: true }).click();
+    if (code === 'tPP') await page.getByLabel('Desactivado (oF)').uncheck();
     await page.getByLabel('Valor programado').fill(value);
     await page.getByRole('button', { name: 'Guardar parámetro' }).click();
   }

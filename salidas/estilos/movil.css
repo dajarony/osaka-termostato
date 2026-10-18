@@ -1,0 +1,254 @@
+/* SUME DOCBLOCK
+Nombre: interacción móvil | Tipo: Salida
+Entradas: tamaño de pantalla, área segura y controles táctiles.
+Acciones: mantener navegación y tiempo accesibles, adaptar edición al dedo.
+Salidas: experiencia móvil e instalación sin desplazamiento lateral.
+*/
+.session-controls {
+  margin-bottom: 18px;
+  padding: 10px 0;
+}
+.install-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.numeric-tools {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+.numeric-tools label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  min-height: 44px;
+}
+.numeric-tools input {
+  width: 22px;
+  height: 22px;
+}
+dialog {
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+button {
+  touch-action: manipulation;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+@media (max-width: 720px) {
+  #view-lab {
+    display: flex;
+    flex-direction: column;
+  }
+  .lab-grid {
+    display: contents;
+  }
+  .lab-grid > .panel:first-child {
+    order: 1;
+    margin-bottom: 16px;
+  }
+  .metrics {
+    order: 2;
+  }
+  .lab-grid > .panel:last-child {
+    order: 3;
+  }
+  .lower-grid {
+    order: 4;
+  }
+  .control-device {
+    padding: 12px;
+  }
+  .device-row {
+    grid-template-columns: minmax(0, 1fr) 94px;
+    gap: 8px;
+  }
+  .lcd {
+    padding: 8px 6px;
+  }
+  .digits {
+    font-size: clamp(28px, 9vw, 44px);
+  }
+  html {
+    scroll-padding-top: 130px;
+    scroll-padding-bottom: 90px;
+  }
+  .workspace {
+    padding-bottom: calc(100px + env(safe-area-inset-bottom));
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+  }
+  .sidebar {
+    padding-top: max(10px, env(safe-area-inset-top));
+  }
+  .nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2px;
+    padding: 6px max(6px, env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom))
+      max(6px, env(safe-area-inset-left));
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+    box-shadow: 0 -4px 24px #263c3510;
+  }
+  .nav button {
+    flex-direction: column;
+    gap: 3px;
+    justify-content: center;
+    min-height: 56px;
+    padding: 5px 1px;
+    font-size: 10px;
+  }
+  .nav .icon {
+    display: block;
+    font-size: 20px;
+  }
+  .btn,
+  .btn.small,
+  .key {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  input:not([type='checkbox']),
+  select,
+  .probe-controls select {
+    font-size: 16px;
+    min-height: 44px;
+  }
+  input[type='checkbox'] {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+  label:has(input[type='checkbox']) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+  }
+  .session-controls {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 8px 0;
+  }
+  .session-controls .toolbar {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  #play {
+    grid-column: span 2;
+  }
+  .session-controls .btn {
+    padding: 6px;
+  }
+  .session-controls select {
+    width: 100%;
+  }
+  .install-bar {
+    font-size: 12px;
+  }
+  .install-bar > span {
+    flex: 1;
+    min-width: 120px;
+  }
+  .probe-controls {
+    grid-template-columns: minmax(70px, 1fr) 44px minmax(120px, 1.5fr);
+    gap: 8px;
+  }
+  .probe-controls input[type='range'] {
+    grid-column: 1 / -1;
+  }
+  .probe-controls input[type='number'] {
+    width: 100%;
+  }
+  .panel {
+    padding: 14px;
+  }
+  .panel-head {
+    gap: 8px;
+  }
+  .panel-head h2 {
+    font-size: 18px;
+  }
+  .panel-head .badge {
+    font-size: 9px;
+    padding: 4px;
+  }
+  .parameter-table th,
+  .parameter-table td {
+    padding: 10px 4px;
+  }
+  .parameter-table th:nth-child(3),
+  .parameter-table td:nth-child(3) {
+    display: none;
+  }
+  .parameter-table {
+    table-layout: fixed;
+  }
+  .parameter-table th:first-child {
+    width: 44px;
+  }
+  .parameter-table th:last-child {
+    width: 80px;
+  }
+  .parameter-table td {
+    overflow-wrap: anywhere;
+  }
+  .param-tools {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  dialog {
+    padding: 20px 16px;
+  }
+  .dialog-actions {
+    position: sticky;
+    bottom: -20px;
+    padding: 12px 0;
+    background: var(--surface);
+  }
+  .dialog-actions > .btn {
+    flex: 1;
+  }
+  .heading {
+    gap: 12px;
+  }
+  .heading p {
+    font-size: 14px;
+  }
+  .footer {
+    line-height: 1.6;
+  }
+}
+@media (max-width: 360px) {
+  .topline {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .metric {
+    padding: 10px;
+  }
+  .metric .eyebrow {
+    font-size: 9px;
+  }
+}

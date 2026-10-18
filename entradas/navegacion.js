@@ -15,6 +15,7 @@ export function createNavigation(root, render) {
       root.querySelector(`#view-${tab.dataset.view}`).hidden = !selected;
     });
     render();
+    if (matchMedia('(max-width: 720px)').matches) window.scrollTo({ top: 0, behavior: 'instant' });
   }
   tabs.forEach(
     (tab, index) =>

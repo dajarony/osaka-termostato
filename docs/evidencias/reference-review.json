@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-18",
+  "subjectCommit": "92fff8f",
+  "externalExecution": false,
+  "references": {
+    "ModESP": "7784e3d226d05fc402e1540366c17e9d4bcf3a75",
+    "STC1000": "24be0127fb94209f18ca702d9dc7b8461c51b673",
+    "Secop": "b014f36c8de087794e3e63a0a4093bf35daa62ea"
+  },
+  "checks": [
+    {
+      "id": "cooling-boundaries",
+      "expected": [
+        false,
+        false,
+        true,
+        true,
+        false
+      ],
+      "observed": [
+        false,
+        false,
+        true,
+        true,
+        false
+      ],
+      "pass": true
+    },
+    {
+      "id": "minimum-off",
+      "expected": [
+        false,
+        true
+      ],
+      "observed": [
+        false,
+        true
+      ],
+      "pass": true
+    },
+    {
+      "id": "probe-failure-cycle",
+      "expected": [
+        true,
+        false,
+        true
+      ],
+      "observed": [
+        true,
+        false,
+        true
+      ],
+      "pass": true
+    },
+    {
+      "id": "defrost-EL",
+      "expected": [
+        false,
+        true
+      ],
+      "observed": [
+        false,
+        true
+      ],
+      "pass": true
+    },
+    {
+      "id": "defrost-in",
+      "expected": [
+        true,
+        true
+      ],
+      "observed": [
+        true,
+        true
+      ],
+      "pass": true
+    },
+    {
+      "id": "evaporator-fault-timeout",
+      "expected": [
+        "defrost",
+        "idle"
+      ],
+      "observed": [
+        "defrost",
+        "idle"
+      ],
+      "pass": true
+    }
+  ],
+  "observations": [
+    {
+      "id": "mid-cycle-type-change",
+      "procedure": "trainingDefaults + ddt=EL,dPE=oF; physics=false; defrost; configure ddt=in",
+      "before": {
+        "phase": "defrost",
+        "compressor": false,
+        "relay": true
+      },
+      "after": {
+        "phase": "defrost",
+        "compressor": true,
+        "relay": true
+      },
+      "classification": "Difference from ModESP cycle type latch; F30 policy not established"
+    },
+    {
+      "id": "loss-of-only-termination",
+      "procedure": "trainingDefaults + ddt=EL,dde=oF,dEE=oF,dPE=EP; physics=false; defrost; fault pr2=open; advance 3600",
+      "after": {
+        "seconds": 3600,
+        "phase": "defrost",
+        "relay": true,
+        "alarms": [
+          "E2"
+        ]
+      },
+      "classification": "No remaining automatic termination; proposed robustness gap, not proven F30 mismatch"
+    }
+  ]
+}

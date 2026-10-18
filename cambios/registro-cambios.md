@@ -38,3 +38,28 @@ en rojo antes de corregirse y pasaron con el mismo banco.
 **Impacto:** PR #1 en borrador; commit de código 93b4d0f y CI 39089734121 correctos.
 No se ha fusionado la propuesta. El simulador también está disponible en servidor local.
 **Autor:** Codex.
+
+## 2026-10-18 — Contraste con repositorios externos
+
+**Archivos afectados:** docs/COMPARACION-REPOS.md y docs/evidencias/reference-review.json.
+**Motivo:** petición de revisar firmware público y explicar qué conviene reutilizar.
+**Impacto:** revisión de tres commits externos, seis comprobaciones locales correctas
+y dos observaciones sobre desescarche documentadas. No cambia el motor ni su contrato;
+no se importó código de terceros ni se ejecutaron los firmwares externos.
+**Autor:** Codex.
+
+## 2026-10-18 — Operación móvil e instalación PWA
+
+**Motivo:** petición explícita de manipular todo desde un móvil; «wpa» interpretado como PWA.
+**Archivos afectados:** vistas/estilos táctiles, editor, sondas, navegación, bootstrap;
+adaptadores de instalación y caché, manifiesto/iconos, constructor Vite, pruebas UI,
+contrato móvil, README, STATUS y mapa SUME.
+**Impacto:** navegación inferior y tiempo accesibles, controles de 44 px, signo y oF
+sin teclado alfanumérico. Producción precarga archivos y permite recargar/editar offline.
+Actualizaciones manuales, caché por ámbito y sin cambios en dominio físico.
+**Evidencia:** 84 pruebas de lógica y 18 UI correctas, 2 omisiones exclusivas de móvil
+en escritorio. La primera prueba offline falló por Vary: Origin en recursos estáticos;
+se corrigió la búsqueda del caché y se repitió con la misma expectativa.
+**Límites:** pruebas en Edge/Chromium con móvil emulado; no instalación física en iOS/Android.
+Publicación HTTPS todavía pendiente. El informe de comparación externa conserva R1/R2 abiertos.
+**Autor:** Codex.

@@ -22,6 +22,9 @@ contracts:
   - name: modulos.md
     file: contratos/modulos.md
     used_by: []
+  - name: movil-pwa.md
+    file: contratos/movil-pwa.md
+    used_by: []
   - name: oraculo.json
     file: contratos/oraculo.json
     used_by: []
@@ -52,7 +55,7 @@ modules:
   - name: entradas/bootstrap.js
     type: entradas
     file: entradas/bootstrap.js
-    depends_on: ["entradas/sesion.js","entradas/almacenamiento.js","entradas/reloj.js","entradas/teclado.js","entradas/navegacion.js","entradas/archivos.js","entradas/interacciones.js","salidas/estructura.js","salidas/controlador.js","salidas/sondas.js","salidas/parametros.js","salidas/editor.js","salidas/pantalla.js","salidas/sonido.js"]
+    depends_on: ["entradas/sesion.js","entradas/almacenamiento.js","entradas/reloj.js","entradas/teclado.js","entradas/navegacion.js","entradas/archivos.js","entradas/interacciones.js","entradas/instalacion.js","salidas/estructura.js","salidas/controlador.js","salidas/sondas.js","salidas/parametros.js","salidas/editor.js","salidas/pantalla.js","salidas/sonido.js"]
   - name: entradas/comandos.js
     type: entradas
     file: entradas/comandos.js
@@ -61,6 +64,10 @@ modules:
     type: entradas
     file: entradas/documento.js
     depends_on: ["entradas/parametros.js","contratos/retos.js","contratos/result.js"]
+  - name: entradas/instalacion.js
+    type: entradas
+    file: entradas/instalacion.js
+    depends_on: ["salidas/instalacion.js"]
   - name: entradas/interacciones.js
     type: entradas
     file: entradas/interacciones.js
@@ -68,6 +75,10 @@ modules:
   - name: entradas/navegacion.js
     type: entradas
     file: entradas/navegacion.js
+    depends_on: []
+  - name: entradas/offline-worker.js
+    type: entradas
+    file: entradas/offline-worker.js
     depends_on: []
   - name: entradas/parametros.js
     type: entradas
@@ -172,7 +183,7 @@ modules:
   - name: salidas/estilos/componentes.css
     type: salidas
     file: salidas/estilos/componentes.css
-    depends_on: ["salidas/estilos/controles.css","salidas/estilos/controlador.css","salidas/estilos/camara.css","salidas/estilos/sondas.css","salidas/estilos/grafica.css","salidas/estilos/parametros.css","salidas/estilos/retos.css","salidas/estilos/diagnostico.css","salidas/estilos/movimiento.css"]
+    depends_on: ["salidas/estilos/controles.css","salidas/estilos/controlador.css","salidas/estilos/camara.css","salidas/estilos/sondas.css","salidas/estilos/grafica.css","salidas/estilos/parametros.css","salidas/estilos/retos.css","salidas/estilos/diagnostico.css","salidas/estilos/movimiento.css","salidas/estilos/movil.css"]
   - name: salidas/estilos/controlador.css
     type: salidas
     file: salidas/estilos/controlador.css
@@ -192,6 +203,10 @@ modules:
   - name: salidas/estilos/layout.css
     type: salidas
     file: salidas/estilos/layout.css
+    depends_on: []
+  - name: salidas/estilos/movil.css
+    type: salidas
+    file: salidas/estilos/movil.css
     depends_on: []
   - name: salidas/estilos/movimiento.css
     type: salidas
@@ -221,6 +236,10 @@ modules:
     type: salidas
     file: salidas/grafica.js
     depends_on: ["salidas/dom.js"]
+  - name: salidas/instalacion.js
+    type: salidas
+    file: salidas/instalacion.js
+    depends_on: []
   - name: salidas/pantalla.js
     type: salidas
     file: salidas/pantalla.js
@@ -256,6 +275,10 @@ modules:
   - name: contratos/modulos.md
     type: contratos
     file: contratos/modulos.md
+    depends_on: []
+  - name: contratos/movil-pwa.md
+    type: contratos
+    file: contratos/movil-pwa.md
     depends_on: []
   - name: contratos/oraculo.json
     type: contratos
