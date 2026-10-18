@@ -1,0 +1,90 @@
+/* SUME DOCBLOCK
+Nombre: estilos parametros | Tipo: Salida
+Entradas: tokens y estado visual.
+Acciones: presentar únicamente parametros.
+Salidas: reglas CSS del componente.
+*/
+.param-tools {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.param-tools input {
+  flex: 1;
+  min-width: 140px;
+}
+.table-wrap {
+  overflow: auto;
+}
+.parameter-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+.parameter-table th {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.parameter-table td {
+  padding: 13px 12px;
+  border-bottom: 1px solid var(--line);
+}
+.parameter-table code {
+  font: 13px var(--mono);
+  color: var(--green);
+  font-weight: 700;
+}
+.parameter-table td small {
+  display: block;
+  color: var(--muted);
+}
+.parameter-table .value-btn {
+  min-width: 65px;
+}
+dialog {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 25px;
+  width: min(460px, calc(100% - 28px));
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 20px 100px #0004;
+}
+dialog::backdrop {
+  background: #252b2977;
+  backdrop-filter: blur(3px);
+}
+dialog h2 {
+  font-size: 26px;
+  margin: 6px 0;
+}
+dialog p {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 8px 0 18px;
+}
+dialog label {
+  display: block;
+  margin-bottom: 7px;
+}
+dialog input,
+dialog select {
+  width: 100%;
+}
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 22px;
+}
+.error-text {
+  color: var(--danger);
+  font-size: 12px;
+  min-height: 18px;
+  margin-top: 9px;
+}

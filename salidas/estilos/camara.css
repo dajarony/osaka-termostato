@@ -1,0 +1,57 @@
+/* SUME DOCBLOCK
+Nombre: estilos camara | Tipo: Salida
+Entradas: tokens y estado visual.
+Acciones: presentar únicamente camara.
+Salidas: reglas CSS del componente.
+*/
+.chamber-wrap {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+  overflow: hidden;
+}
+.chamber-wrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.plant-label {
+  font: 11px var(--mono);
+  fill: var(--muted);
+}
+.plant-value {
+  font: 20px var(--mono);
+  fill: var(--ink);
+}
+.plant-tag {
+  font: 9px var(--sans);
+  fill: var(--muted);
+  letter-spacing: 1px;
+}
+.circuit {
+  stroke-dasharray: 7 6;
+  animation: flow 1.5s linear infinite;
+}
+.fan-rotor {
+  transform-origin: 408px 95px;
+  animation: spin 1.6s linear infinite;
+}
+.paused-animation {
+  animation-play-state: paused;
+}
+.plant-options {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  font-size: 11px;
+}
+.plant-options label {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.plant-options input[type='number'] {
+  width: 70px;
+}

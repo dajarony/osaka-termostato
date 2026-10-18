@@ -1,0 +1,46 @@
+/* SUME DOCBLOCK
+Nombre: estilos movimiento | Tipo: Salida
+Entradas: tokens y estado visual.
+Acciones: presentar únicamente movimiento.
+Salidas: reglas CSS del componente.
+*/
+@keyframes flow {
+  to {
+    stroke-dashoffset: -26;
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media (max-width: 720px) {
+  .digits {
+    font-size: 60px;
+  }
+  .probe-controls {
+    grid-template-columns: 1fr 70px 85px;
+  }
+  .parameter-table td,
+  .parameter-table th {
+    padding: 10px 8px;
+  }
+  .parameter-table .category-col {
+    display: none;
+  }
+  .device-row {
+    grid-template-columns: 1fr 90px;
+  }
+  .control-actions .btn {
+    font-size: 11px;
+  }
+  .chart-summary {
+    gap: 12px;
+  }
+}

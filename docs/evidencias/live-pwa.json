@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-18",
+  "url": "https://dajarony.github.io/osaka-termostato/",
+  "deployment": {
+    "publishedDate": "2026-10-18",
+    "sourceCommit": "e8dec7eb6259d5a77e626b2d6c01481badcbf409",
+    "sourceBranch": "feat/sume-simulator"
+  },
+  "registration": {
+    "scope": "https://dajarony.github.io/osaka-termostato/",
+    "script": "https://dajarony.github.io/osaka-termostato/sw.js"
+  },
+  "https": true,
+  "httpStatus": 200,
+  "browser": "Edge Chromium, Pixel 7 emulation",
+  "realDevice": false,
+  "checks": [
+    "online launch",
+    "correct subdirectory scope",
+    "touch parameter edit",
+    "offline reload",
+    "persisted setpoint",
+    "offline simulation +60 seconds",
+    "offline navigation four tabs",
+    "no JavaScript exceptions"
+  ],
+  "result": "passed"
+}

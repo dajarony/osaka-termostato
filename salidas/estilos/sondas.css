@@ -1,0 +1,42 @@
+/* SUME DOCBLOCK
+Nombre: estilos sondas | Tipo: Salida
+Entradas: tokens y estado visual.
+Acciones: presentar únicamente sondas.
+Salidas: reglas CSS del componente.
+*/
+.probe {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.probe:first-of-type {
+  padding-top: 0;
+}
+.probe:last-of-type {
+  border: 0;
+}
+.probe-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.probe-head strong {
+  font: 18px var(--mono);
+}
+.probe-head span {
+  font-size: 12px;
+}
+.probe-controls {
+  display: grid;
+  grid-template-columns: 1fr 75px 44px 100px;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.probe-controls input[type='number'] {
+  width: 75px;
+}
+.probe-controls select {
+  font-size: 10px;
+  padding: 7px;
+}

@@ -1,0 +1,20 @@
+{
+  "status": "Hipótesis explícitas basadas en la petición y en el manual; sin firma humana formal",
+  "version": 1,
+  "subject": "createSession.run(command)",
+  "target": "100% de invariantes críticos y cero rechazos de entradas legítimas del banco",
+  "invariants": {
+    "INV-1": "Standby desactiva regulación, desescarche y ventilador; auxiliar modo 5 es excepción explícita",
+    "INV-2": "En frío SP=15 rd=4: arranca a 19 y para a 15, conserva demanda entre umbrales",
+    "INV-3": "Comando inválido no modifica ningún estado",
+    "INV-4": "PP2=2 impide arrancar antes de 120 s desde toda parada real",
+    "INV-5": "dde=-10 termina exactamente a los 10 segundos, no al minuto",
+    "INV-6": "Eléctrico desactiva compresor; gas caliente solicita compresor sujeto a protección",
+    "INV-7": "dtd y FFd tienen relojes independientes",
+    "INV-8": "Sin hardware ot asignado la planta no enfría por una demanda lógica",
+    "INV-9": "Avanzar 60 equivale a avanzar 1 sesenta veces",
+    "INV-10": "Importación inválida es atómica y no se evalúa como código",
+    "INV-11": "La inicialización de un reto no prueba su ejecución",
+    "INV-12": "Temperaturas, energía y trazas permanecen finitas y acotadas"
+  }
+}
