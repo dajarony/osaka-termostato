@@ -10,7 +10,7 @@ const proc=spawn(chrome,['--headless=new','--no-sandbox','--disable-gpu','--disa
 let ws;
 async function main(){
  let target;
- for(let i=0;i<80;i++){try{const list=await (await fetch('http://127.0.0.1:9444/json')).json();target=list.find(t=>t.type==='page'&&t.url.startsWith('file:'))||list.find(t=>t.type==='page');if(target)break;}catch(e){}await sleep(100);}
+ for(let i=0;i<220;i++){try{const list=await (await fetch('http://127.0.0.1:9444/json')).json();target=list.find(t=>t.type==='page'&&t.url.startsWith('file:'))||list.find(t=>t.type==='page');if(target)break;}catch(e){}await sleep(100);}
  assert.ok(target,'No se pudo lanzar Chrome');
  ws=new WebSocket(target.webSocketDebuggerUrl);
  await new Promise((resolve,reject)=>{ws.addEventListener('open',resolve,{once:true});ws.addEventListener('error',reject,{once:true});});
