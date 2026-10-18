@@ -40,7 +40,7 @@ function repaint(){
  catalogReadOnly();
  if(lesson)renderGoals();
 }
-function catalogReadOnly(){const needle=$('lookup').value.trim().toLowerCase();const defs=catalog.defs.filter(d=>d.code.toLowerCase().includes(needle)||d.title.toLowerCase().includes(needle)||d.group.toLowerCase().includes(needle));$('paramcount').textContent=defs.length+' / 72';$('paramlist').innerHTML=defs.map(d=>'<article class="paramitem"><b>'+safe(d.code)+'</b><span class="pvalue">'+safe(plant.p[d.code])+'</span><small>'+safe(d.title)+'</small><span class="coverage">'+(d.coverage==='simulado'?'Motor didáctico':'Consultar manual; comportamiento avanzado')+'</span></article>').join('');}
+function catalogReadOnly(){const needle=$('lookup').value.trim().toLowerCase();const defs=catalog.defs.filter(d=>d.code.toLowerCase().includes(needle)||d.title.toLowerCase().includes(needle)||d.group.toLowerCase().includes(needle));$('paramcount').textContent=defs.length+' / 72';$('paramlist').innerHTML=defs.map(d=>'<article class="paramitem"><b>'+safe(d.code)+'</b><span class="pvalue">'+safe(plant.p[d.code])+'</span><small>'+safe(d.title)+'</small><span class="coverage">'+(d.coverage==='parcial'?'Simulación básica parcial':'Referencia: aún no simulado')+'</span></article>').join('');}
 function renderGoals(){const states=lesson.goals.map(([title,fn])=>{let ok=false;try{ok=!!fn({plant,panel});}catch(e){}return {title,ok};});
  $('exercise').innerHTML='<h3>'+safe(lesson.title)+'</h3><p>'+safe(lesson.desc)+'</p>'+states.map(g=>'<div class="objective '+(g.ok?'pass':'')+'"><span>'+(g.ok?'✓':'○')+'</span>'+safe(g.title)+'</div>').join('');
 }
