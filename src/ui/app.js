@@ -66,6 +66,7 @@ const keymap={Enter:'SET',ArrowUp:'UP',ArrowDown:'DOWN',Escape:'POWER'};
 let physicalKey=null;
 document.addEventListener('keydown',e=>{if(e.target.matches('input,select,textarea')||!keymap[e.key])return;e.preventDefault();if(physicalKey)return;physicalKey={key:keymap[e.key],started:performance.now()};$('hold').textContent='Tecla '+physicalKey.key+' mantenida...';});
 document.addEventListener('keyup',e=>{if(!physicalKey||keymap[e.key]!==physicalKey.key)return;e.preventDefault();const k=physicalKey;physicalKey=null;key(k.key,(performance.now()-k.started)/1000);$('hold').textContent='Mantén presionada una tecla para utilizar su función larga';});
+const container=$('probes');container.innerHTML=['P1','P2','P3'].map((name,i)=>'<div class="probe"><label for="s'+name+'"><span>'+(i===0?'Pr1 · cámara':i===1?'Pr2 · evaporador':'Pr3 · auxiliar / digital')+'</span><strong id="v'+name+'">—</strong></label><input type="range" min="-30" max="50" step="0.1" id="s'+name+'" value="'+plant.t[name]+'"></div>').join('');
 for(const n of ['P1','P2','P3']){$('s'+n).addEventListener('input',e=>{plant.setSensor(n,Number(e.target.value));repaint();});$('fail'+n.slice(1)).addEventListener('change',e=>{plant.setFailure(n,e.target.checked);repaint();});}
 $('digitalInput').addEventListener('change',e=>{plant.setDigital(e.target.checked);repaint();});
 document.querySelectorAll('[data-seconds]').forEach(b=>b.addEventListener('click',()=>{plant.advance(Number(b.dataset.seconds));repaint();}));
@@ -73,7 +74,7 @@ $('autoplay').onclick=()=>{if(playing){clearInterval(playing);playing=null;$('au
 $('lesson').innerHTML=lessons.map(l=>'<option value="'+l.id+'">Nivel '+l.level+' · '+safe(l.title)+'</option>').join('');
 $('lesson').addEventListener('change',prepare);$('loadLesson').onclick=prepare;$('grade').onclick=grade;$('hint').onclick=()=>{$('hintbox').textContent=lesson.hint;$('hintbox').hidden=!$('hintbox').hidden;};
 $('lookup').addEventListener('input',catalogReadOnly);
-const container=$('probes');container.innerHTML=['P1','P2','P3'].map((name,i)=>'<div class="probe"><label for="s'+name+'"><span>'+(i===0?'Pr1 · cámara':i===1?'Pr2 · evaporador':'Pr3 · auxiliar / digital')+'</span><strong id="v'+name+'">—</strong></label><input type="range" min="-30" max="50" step="0.1" id="s'+name+'" value="'+plant.t[name]+'"></div>').join('');
+
 // Los eventos del laboratorio cambian solo condiciones físicas; jamás escriben parámetros.
 prepare();
 })(typeof window!=='undefined'?window:globalThis);
