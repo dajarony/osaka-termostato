@@ -14,8 +14,8 @@ const rows=[
 ['oo1','Salida OUT1','Salidas','ot','enum:oF,ot,dF,Fn,Au,At,AL,An,on,HE'],['oo2','Salida OUT2','Salidas','dF','enum:oF,ot,dF,Fn,Au,At,AL,An,on,HE'],['oo3','Salida OUT3','Salidas','Fn','enum:oF,ot,dF,Fn,Au,At,AL,An,on,HE'],['obu','Zumbador','Salidas',3,'enum:oF,1,2,3'],['oFo','Tipo de auxiliar','Salidas','oF','enum:oF,1,2,3,4'],['otu','Tiempo salida auxiliar','Salidas','oF','duration'],
 ['tUF','Función de botón superior izquierdo','Teclas',3,'enum:oF,1,2,3,4'],['tFb','Función de botón abajo','Teclas','oF','enum:oF,1,2,3,4'],['tLo','Bloqueo de teclado','Teclas','oF','duration'],['tEd','Consignas accesibles por SET','Teclas',4,'enum:0,1,2,3,4,5,6'],['tPP','Contraseña parámetros','Teclas','oF','password']
 ];
-const advanced=new Set(['iFt','iCU','iEt','itt','rEd','rHd','rt1','rt2','rtC','dtF','dSt','dcd','ddd','dEi','dEE','AAy','AHA','ALA','AAd','AAt','AtA','APA','AdA','AoA','oFo','otu','tLo','tEd','iFi','iti','tFb']);
-const defs=rows.map(([code,title,group,defaultValue,kind,min,max],id)=>Object.freeze({code,title,group,defaultValue,kind,min,max,id:id+1,coverage:advanced.has(code)?'documentado':'simulado'}));
+const modeled=new Set(['SLS','SHS','SP','iC1','iC2','iC3','iP2','iP3','idS','rd','rHC','dtE','dtS','ddL','dde','dtd','ddt','ddC','dPE','ddi','dSd','Ftn','FtF','FFL','FLF','FdF','FFE','FFd','PP1','PP2','PP3','Pod','oo1','oo2','oo3','tUF','tPP']);
+const defs=rows.map(([code,title,group,defaultValue,kind,min,max],id)=>Object.freeze({code,title,group,defaultValue,kind,min,max,id:id+1,coverage:modeled.has(code)?'parcial':'referencia'}));
 const byCode=Object.fromEntries(defs.map(d=>[d.code,d]));
 function factory(){return Object.fromEntries(defs.map(d=>[d.code,d.defaultValue]));}
 function options(d){return d.kind.startsWith('enum:')?d.kind.slice(5).split(','):null;}
