@@ -23,7 +23,7 @@ async function main(){
  assert.equal(await evalJS("document.querySelectorAll('.paramitem').length"),72,'Catálogo no aparece');
  assert.equal(await evalJS("document.querySelectorAll('.hardkey').length"),4,'No están las cuatro teclas');
  assert.equal(await evalJS("document.querySelectorAll('#lesson option').length"),14);
- const rect=async key=>evalJS("(()=>{const b=document.querySelector('[data-key="+JSON.stringify(key)+"]');const r=b.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()");
+ const rect=async key=>evalJS("(()=>{const b=document.querySelector('[data-key="+JSON.stringify(key)+"]');b.scrollIntoView({block:'center'});const r=b.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()");
  const hold=async (key,ms)=>{const {x,y}=await rect(key);await send('Input.dispatchMouseEvent',{type:'mouseMoved',x,y});await send('Input.dispatchMouseEvent',{type:'mousePressed',x,y,button:'left',buttons:1,clickCount:1});await sleep(ms);await send('Input.dispatchMouseEvent',{type:'mouseReleased',x,y,button:'left',buttons:0,clickCount:1});await sleep(120);};
  await hold('SET',5100);
  assert.equal(await evalJS("document.querySelector('#screen').textContent"),'SLS','SET 5 s no abrió los parámetros');
