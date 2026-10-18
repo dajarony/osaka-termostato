@@ -1,7 +1,8 @@
 # Estado · Osaka F30
 
 Fecha: 2026-10-18. Autor: Codex.
-Estado: cámara de referencia implementada y verificada localmente. Entrega revisable en preparación.
+Estado: cámara de referencia implementada y verificada localmente y en CI de GitHub.
+Entrega revisable: https://github.com/dajarony/osaka-termostato/pull/1 (borrador).
 La fidelidad extendida C3/RTC/ddd queda pendiente; ver docs/COBERTURA.md.
 
 - [x] 1. Fundamentos y contratos base
@@ -33,3 +34,4 @@ aprobaciones humanas ni ejecuciones históricas separadas para cada fase.
 | 2026-10-18 | 4 | Codex | CMCF, FASER, SCP y oráculo documentados como hipótesis técnicas; sin firma Approved. |
 | 2026-10-18 | 5–6 | Codex | Dominio, planta y persistencia verificados por 84 pruebas; cinco regresiones ECA reproducidas y corregidas. |
 | 2026-10-18 | 7–9 | Codex | Presentación y alcance documentado cerrados con check, formato, build y 12 pruebas UI. Capturas revisadas. Fidelidad extendida pendiente explícita. |
+| 2026-10-18 | Entrega | Codex | Commit 93b4d0f publicado en feat/sume-simulator; PR #1 en borrador. CI 39089734121 completa correctamente instalación, análisis, formato, 84 tests, build y 12 UI en Linux/Chromium. |

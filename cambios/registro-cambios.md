@@ -30,3 +30,11 @@ se registran en docs/evidencias y docs/ECA-INFORME.md. Cinco hallazgos nuevos se
 en rojo antes de corregirse y pasaron con el mismo banco.
 
 **Autor:** Codex por solicitud del usuario; cámara de referencia confirmada en conversación.
+
+## 2026-10-18 — Entrega revisable y verificación remota
+
+**Archivos afectados:** STATUS.md y este registro.
+**Motivo:** registrar la entrega efectivamente creada, no un estado previsto.
+**Impacto:** PR #1 en borrador; commit de código 93b4d0f y CI 39089734121 correctos.
+No se ha fusionado la propuesta. El simulador también está disponible en servidor local.
+**Autor:** Codex.
