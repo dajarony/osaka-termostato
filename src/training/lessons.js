@@ -3,7 +3,6 @@
 const has=(x,key)=>x.plant.events.some(e=>e.kind===key);
 const ordered=(x,a,b)=>{const ev=x.plant.events;const i=ev.findIndex(e=>e.kind===a);return i>=0&&ev.slice(i+1).some(e=>e.kind===b);};
 const p=(x,k,v)=>x.plant.p[k]===v;
-const t=(x,k,v)=>x.plant.t[k]===v;
 const list=[
 {id:'thermostat',level:1,title:'19 °C arranca, 15 °C para',desc:'Configura una cámara en refrigeración. Después provoca ambos cambios de temperatura en Pr1.',env:{P1:16,P2:0},goals:[['SP = 15',x=>p(x,'SP',15)],['rd = 4',x=>p(x,'rd',4)],['rHC = C',x=>p(x,'rHC','C')],['Regulación arranca y luego para',x=>ordered(x,'comp:on','comp:off')]],hint:'SET breve → SP=15 → SET. SET 5 s → busca rd → SET → 4 → SET. Sal con ⏻ 2 s. Cambia Pr1 a 19 y luego a 15.'},
 {id:'newset',level:1,title:'Ajustar cámara a 5–7 °C',desc:'Otro equipo necesita arrancar a 7 °C y parar a 5 °C.',env:{P1:6,P2:0},goals:[['SP = 5',x=>p(x,'SP',5)],['rd = 2',x=>p(x,'rd',2)],['Arranque y parada comprobados',x=>ordered(x,'comp:on','comp:off')]],hint:'SP=5 y rd=2. Con Pr1=7 deberá solicitar marcha; con Pr1=5 deberá detenerse.'},
