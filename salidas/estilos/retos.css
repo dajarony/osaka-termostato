@@ -1,0 +1,61 @@
+/* SUME DOCBLOCK
+Nombre: estilos retos | Tipo: Salida
+Entradas: tokens y estado visual.
+Acciones: presentar únicamente retos.
+Salidas: reglas CSS del componente.
+*/
+.lesson-card {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lesson-card.active {
+  border-color: var(--green);
+  background: var(--green-soft);
+}
+.lesson-card p {
+  font-size: 12px;
+  color: var(--muted);
+  flex: 1;
+}
+.lesson-card .btn {
+  align-self: flex-start;
+}
+.lesson-active {
+  padding: 20px;
+  border: 1px solid var(--green);
+  background: var(--green-soft);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+.lesson-active h3 {
+  font-size: 19px;
+  margin: 7px 0;
+}
+.goals {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+  margin: 14px 0;
+}
+.goals .passed {
+  color: var(--green);
+  font-weight: 600;
+}
+.goals li:before {
+  content: '○';
+  margin-right: 8px;
+}
+.goals .passed:before {
+  content: '✓';
+}
+.lesson-active details {
+  font-size: 12px;
+  margin: 12px 0;
+}

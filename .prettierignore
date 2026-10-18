@@ -1,0 +1,8 @@
+node_modules
+dist
+test-results
+docs/evidencias
+contratos/catalogo.js
+contratos/retos.js
+mapa-global
+package-lock.json

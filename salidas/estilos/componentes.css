@@ -1,0 +1,15 @@
+/* SUME DOCBLOCK
+Nombre: componentes visuales | Tipo: Salida
+Entradas: estado visual y tokens.
+Acciones: presentar controles, máquina y datos.
+Salidas: componentes accesibles y coherentes.
+*/
+@import './controles.css';
+@import './controlador.css';
+@import './camara.css';
+@import './sondas.css';
+@import './grafica.css';
+@import './parametros.css';
+@import './retos.css';
+@import './diagnostico.css';
+@import './movimiento.css';

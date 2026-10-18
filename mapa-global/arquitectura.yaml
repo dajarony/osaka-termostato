@@ -1,0 +1,283 @@
+system: osaka-termostato
+version: 3.0.0
+last_updated: '2026-10-18'
+sume_version: '1.0'
+entry: main.js
+routes:
+  - path: /
+    method: browser
+    entrada: entradas/bootstrap.js
+    controlador: entradas/sesion.js
+    logica: logica/controlador.js
+    contrato_entrada: contratos/simulador.faser.md
+    contrato_salida: contratos/laboratorio-scp.md
+    salida: salidas/pantalla.js
+contracts:
+  - name: catalogo.js
+    file: contratos/catalogo.js
+    used_by: ["contratos/parametros.js"]
+  - name: laboratorio-scp.md
+    file: contratos/laboratorio-scp.md
+    used_by: []
+  - name: modulos.md
+    file: contratos/modulos.md
+    used_by: []
+  - name: oraculo.json
+    file: contratos/oraculo.json
+    used_by: []
+  - name: parametros.js
+    file: contratos/parametros.js
+    used_by: ["entradas/parametros.js","entradas/sesion.js","salidas/editor.js","salidas/parametros.js"]
+  - name: result.js
+    file: contratos/result.js
+    used_by: ["entradas/almacenamiento.js","entradas/comandos.js","entradas/documento.js","entradas/parametros.js","entradas/sesion.js","logica/acciones.js","logica/desescarche.js"]
+  - name: retos.js
+    file: contratos/retos.js
+    used_by: ["entradas/comandos.js","entradas/documento.js","entradas/sesion.js","logica/aprendizaje.js","salidas/retos.js"]
+  - name: simulador.faser.md
+    file: contratos/simulador.faser.md
+    used_by: []
+  - name: teclas.js
+    file: contratos/teclas.js
+    used_by: ["entradas/teclado.js"]
+modules:
+  - name: entradas/almacenamiento.js
+    type: entradas
+    file: entradas/almacenamiento.js
+    depends_on: ["entradas/documento.js","salidas/documento.js","contratos/result.js"]
+  - name: entradas/archivos.js
+    type: entradas
+    file: entradas/archivos.js
+    depends_on: ["entradas/documento.js","salidas/documento.js"]
+  - name: entradas/bootstrap.js
+    type: entradas
+    file: entradas/bootstrap.js
+    depends_on: ["entradas/sesion.js","entradas/almacenamiento.js","entradas/reloj.js","entradas/teclado.js","entradas/navegacion.js","entradas/archivos.js","entradas/interacciones.js","salidas/estructura.js","salidas/controlador.js","salidas/sondas.js","salidas/parametros.js","salidas/editor.js","salidas/pantalla.js","salidas/sonido.js"]
+  - name: entradas/comandos.js
+    type: entradas
+    file: entradas/comandos.js
+    depends_on: ["contratos/result.js","entradas/parametros.js","contratos/retos.js"]
+  - name: entradas/documento.js
+    type: entradas
+    file: entradas/documento.js
+    depends_on: ["entradas/parametros.js","contratos/retos.js","contratos/result.js"]
+  - name: entradas/interacciones.js
+    type: entradas
+    file: entradas/interacciones.js
+    depends_on: []
+  - name: entradas/navegacion.js
+    type: entradas
+    file: entradas/navegacion.js
+    depends_on: []
+  - name: entradas/parametros.js
+    type: entradas
+    file: entradas/parametros.js
+    depends_on: ["contratos/parametros.js","contratos/result.js"]
+  - name: entradas/reloj.js
+    type: entradas
+    file: entradas/reloj.js
+    depends_on: []
+  - name: entradas/sesion.js
+    type: entradas
+    file: entradas/sesion.js
+    depends_on: ["contratos/parametros.js","contratos/retos.js","contratos/result.js","entradas/comandos.js","entradas/parametros.js","logica/estado.js","logica/controlador.js","logica/acciones.js","logica/aprendizaje.js"]
+  - name: entradas/teclado.js
+    type: entradas
+    file: entradas/teclado.js
+    depends_on: ["logica/tiempo.js","contratos/teclas.js"]
+  - name: logica/acciones.js
+    type: logica
+    file: logica/acciones.js
+    depends_on: ["logica/planta.js","logica/controlador.js","logica/eventos.js","logica/modos.js","logica/desescarche.js","logica/aprendizaje.js","contratos/result.js"]
+  - name: logica/alarmas.js
+    type: logica
+    file: logica/alarmas.js
+    depends_on: ["logica/sondas.js","logica/tiempo.js","logica/modos.js","logica/eventos.js"]
+  - name: logica/aprendizaje.js
+    type: logica
+    file: logica/aprendizaje.js
+    depends_on: ["contratos/retos.js"]
+  - name: logica/controlador.js
+    type: logica
+    file: logica/controlador.js
+    depends_on: ["logica/sondas.js","logica/modos.js","logica/desescarche.js","logica/regulacion.js","logica/ventilacion.js","logica/alarmas.js","logica/reles.js","logica/eventos.js"]
+  - name: logica/desescarche.js
+    type: logica
+    file: logica/desescarche.js
+    depends_on: ["logica/tiempo.js","logica/sondas.js","logica/modos.js","logica/eventos.js","contratos/result.js"]
+  - name: logica/estado.js
+    type: logica
+    file: logica/estado.js
+    depends_on: []
+  - name: logica/eventos.js
+    type: logica
+    file: logica/eventos.js
+    depends_on: []
+  - name: logica/modos.js
+    type: logica
+    file: logica/modos.js
+    depends_on: ["logica/tiempo.js"]
+  - name: logica/planta.js
+    type: logica
+    file: logica/planta.js
+    depends_on: []
+  - name: logica/regulacion.js
+    type: logica
+    file: logica/regulacion.js
+    depends_on: ["logica/tiempo.js","logica/sondas.js","logica/modos.js","logica/eventos.js"]
+  - name: logica/reles.js
+    type: logica
+    file: logica/reles.js
+    depends_on: ["logica/tiempo.js","logica/modos.js"]
+  - name: logica/sondas.js
+    type: logica
+    file: logica/sondas.js
+    depends_on: []
+  - name: logica/tiempo.js
+    type: logica
+    file: logica/tiempo.js
+    depends_on: []
+  - name: logica/ventilacion.js
+    type: logica
+    file: logica/ventilacion.js
+    depends_on: ["logica/sondas.js","logica/tiempo.js","logica/modos.js","logica/eventos.js"]
+  - name: salidas/controlador.js
+    type: salidas
+    file: salidas/controlador.js
+    depends_on: ["salidas/display.js","salidas/dom.js"]
+  - name: salidas/diagnostico.js
+    type: salidas
+    file: salidas/diagnostico.js
+    depends_on: ["salidas/dom.js"]
+  - name: salidas/display.js
+    type: salidas
+    file: salidas/display.js
+    depends_on: ["logica/modos.js","logica/tiempo.js"]
+  - name: salidas/documento.js
+    type: salidas
+    file: salidas/documento.js
+    depends_on: []
+  - name: salidas/dom.js
+    type: salidas
+    file: salidas/dom.js
+    depends_on: []
+  - name: salidas/editor.js
+    type: salidas
+    file: salidas/editor.js
+    depends_on: ["contratos/parametros.js","salidas/dom.js","salidas/parametros.js"]
+  - name: salidas/estilos/camara.css
+    type: salidas
+    file: salidas/estilos/camara.css
+    depends_on: []
+  - name: salidas/estilos/componentes.css
+    type: salidas
+    file: salidas/estilos/componentes.css
+    depends_on: ["salidas/estilos/controles.css","salidas/estilos/controlador.css","salidas/estilos/camara.css","salidas/estilos/sondas.css","salidas/estilos/grafica.css","salidas/estilos/parametros.css","salidas/estilos/retos.css","salidas/estilos/diagnostico.css","salidas/estilos/movimiento.css"]
+  - name: salidas/estilos/controlador.css
+    type: salidas
+    file: salidas/estilos/controlador.css
+    depends_on: []
+  - name: salidas/estilos/controles.css
+    type: salidas
+    file: salidas/estilos/controles.css
+    depends_on: []
+  - name: salidas/estilos/diagnostico.css
+    type: salidas
+    file: salidas/estilos/diagnostico.css
+    depends_on: []
+  - name: salidas/estilos/grafica.css
+    type: salidas
+    file: salidas/estilos/grafica.css
+    depends_on: []
+  - name: salidas/estilos/layout.css
+    type: salidas
+    file: salidas/estilos/layout.css
+    depends_on: []
+  - name: salidas/estilos/movimiento.css
+    type: salidas
+    file: salidas/estilos/movimiento.css
+    depends_on: []
+  - name: salidas/estilos/parametros.css
+    type: salidas
+    file: salidas/estilos/parametros.css
+    depends_on: []
+  - name: salidas/estilos/retos.css
+    type: salidas
+    file: salidas/estilos/retos.css
+    depends_on: []
+  - name: salidas/estilos/sondas.css
+    type: salidas
+    file: salidas/estilos/sondas.css
+    depends_on: []
+  - name: salidas/estilos/tokens.css
+    type: salidas
+    file: salidas/estilos/tokens.css
+    depends_on: []
+  - name: salidas/estructura.js
+    type: salidas
+    file: salidas/estructura.js
+    depends_on: []
+  - name: salidas/grafica.js
+    type: salidas
+    file: salidas/grafica.js
+    depends_on: ["salidas/dom.js"]
+  - name: salidas/pantalla.js
+    type: salidas
+    file: salidas/pantalla.js
+    depends_on: ["salidas/controlador.js","salidas/planta.js","salidas/sondas.js","salidas/grafica.js","salidas/retos.js","salidas/diagnostico.js","logica/modos.js","salidas/dom.js"]
+  - name: salidas/parametros.js
+    type: salidas
+    file: salidas/parametros.js
+    depends_on: ["contratos/parametros.js","salidas/dom.js"]
+  - name: salidas/planta.js
+    type: salidas
+    file: salidas/planta.js
+    depends_on: ["salidas/dom.js"]
+  - name: salidas/retos.js
+    type: salidas
+    file: salidas/retos.js
+    depends_on: ["contratos/retos.js","salidas/dom.js"]
+  - name: salidas/sondas.js
+    type: salidas
+    file: salidas/sondas.js
+    depends_on: ["salidas/dom.js"]
+  - name: salidas/sonido.js
+    type: salidas
+    file: salidas/sonido.js
+    depends_on: []
+  - name: contratos/catalogo.js
+    type: contratos
+    file: contratos/catalogo.js
+    depends_on: []
+  - name: contratos/laboratorio-scp.md
+    type: contratos
+    file: contratos/laboratorio-scp.md
+    depends_on: []
+  - name: contratos/modulos.md
+    type: contratos
+    file: contratos/modulos.md
+    depends_on: []
+  - name: contratos/oraculo.json
+    type: contratos
+    file: contratos/oraculo.json
+    depends_on: []
+  - name: contratos/parametros.js
+    type: contratos
+    file: contratos/parametros.js
+    depends_on: ["contratos/catalogo.js"]
+  - name: contratos/result.js
+    type: contratos
+    file: contratos/result.js
+    depends_on: []
+  - name: contratos/retos.js
+    type: contratos
+    file: contratos/retos.js
+    depends_on: []
+  - name: contratos/simulador.faser.md
+    type: contratos
+    file: contratos/simulador.faser.md
+    depends_on: []
+  - name: contratos/teclas.js
+    type: contratos
+    file: contratos/teclas.js
+    depends_on: []

@@ -1,0 +1,25 @@
+{
+  "name": "osaka-termostato",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "check": "node scripts/check.mjs",
+    "test": "node --test tests/*.test.js tests/eca/*.test.js",
+    "test:ui": "playwright test",
+    "map": "node scripts/map.mjs",
+    "test:eca": "node --test tests/eca/*.test.js",
+    "format:check": "prettier --check entradas logica salidas tests scripts index.html main.js vite.config.js playwright.config.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "prettier": "^3.9.10",
+    "vite": "^7.1.0"
+  }
+}

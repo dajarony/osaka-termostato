@@ -1,0 +1,107 @@
+/* SUME DOCBLOCK
+Nombre: tokens | Tipo: Salida
+Entradas: sistema visual del laboratorio.
+Acciones: definir colores, tipografía y espaciado.
+Salidas: variables CSS compartidas.
+*/
+:root {
+  --paper: #eeeae2;
+  --surface: #faf8f3;
+  --white: #fff;
+  --ink: #252b29;
+  --muted: #72786e;
+  --line: #d9dacf;
+  --accent: #e97842;
+  --accent-soft: #f9e6d8;
+  --green: #44745a;
+  --green-soft: #e4ecdf;
+  --blue: #4e7c8b;
+  --blue-soft: #e3edf0;
+  --danger: #b74632;
+  --dark: #242c29;
+  --screen: #171f1b;
+  --display: #d2ed91;
+  --shadow: 0 5px 18px #252b2908;
+  --radius: 16px;
+  --mono: 'Cascadia Code', Consolas, monospace;
+  --sans: 'Segoe UI', Arial, sans-serif;
+  --space: 24px;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 14px/1.5 var(--sans);
+}
+button,
+input,
+select {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+button,
+input,
+select {
+  outline-offset: 4px;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--accent);
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+h1 {
+  font-size: 32px;
+  letter-spacing: -1.2px;
+  line-height: 1.15;
+}
+h2 {
+  font-size: 17px;
+  letter-spacing: -0.4px;
+}
+h3 {
+  font-size: 15px;
+}
+a {
+  color: var(--green);
+}
+.muted {
+  color: var(--muted);
+}
+.mono {
+  font-family: var(--mono);
+}
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+[hidden] {
+  display: none !important;
+}
