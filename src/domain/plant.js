@@ -1,11 +1,10 @@
 (function(root){
 'use strict';
 const cat=root.F30.catalog;
-const finite=v=>v==='oF'||v==null?Infinity:Number(v);
 const duration=v=>cat.seconds(v,'duration');
 const interval=v=>cat.seconds(v,'interval');
 class Plant {
- constructor(params){this.p={...cat.factory(),...(params||{})};this.t={P1:20,P2:13,P3:19};this.fail={P1:false,P2:false,P3:false};this.digital=false;this.powered=true;this.now=0;this.comp=false;this.heat=false;this.fan=false;this.def=false;this.dfRelay=false;this.defSince=0;this.lastDefEnd=0;this.firstDef=true;this.lastStart=-1e9;this.lastStop=-1e9;this.wantSince=null;this.drainUntil=0;this.fanUntil=0;this.compOffSince=0;this.fanBlocked=false;this.ctCount=0;this.intervalCount=0;this.lastOffReason='';this.reason='';this.events=[];this.emit('boot','Controlador encendido');this.evaluate();}
+ constructor(params){this.p={...cat.factory(),...(params||{})};this.t={P1:20,P2:13,P3:19};this.fail={P1:false,P2:false,P3:false};this.digital=false;this.powered=true;this.now=0;this.comp=false;this.heat=false;this.fan=false;this.def=false;this.dfRelay=false;this.defSince=0;this.lastDefEnd=0;this.firstDef=true;this.lastStart=-1e9;this.lastStop=-1e9;this.wantSince=null;this.drainUntil=0;this.fanUntil=0;this.compOffSince=0;this.fanBlocked=false;this.intervalCount=0;this.reason='';this.events=[];this.emit('boot','Controlador encendido');this.evaluate();}
  emit(kind,detail){this.events.push({kind,detail,at:this.now});if(this.events.length>140)this.events.shift();}
  reading(n){if(this.fail[n])return null;if(n==='P2'&&this.p.iP2==='oF'||n==='P3'&&this.p.iP3==='oF')return null;const k=n==='P1'?'iC1':n==='P2'?'iC2':'iC3';return Math.round((this.t[n]+Number(this.p[k]||0))*10)/10;}
  epId(){return this.p.iP2==='EP'?'P2':this.p.iP3==='EP'?'P3':null;}
@@ -23,7 +22,7 @@ class Plant {
  manualDefrost(){return this.def?this.stopDefrost('manual'):this.startDefrost('manual');}
  startDefrost(cause){const check=this.canDefrost();if(!check.ok){this.emit('def:reject',check.reason);this.reason=check.reason;return false;}
  this.def=true;this.defSince=this.now;this.dfRelay=true;this.drainUntil=0;this.emit('def:start','Inicio '+cause);this.evaluate();return true;}
- stopDefrost(reason){if(!this.def)return false;this.def=false;this.dfRelay=false;this.firstDef=false;this.lastDefEnd=this.now;this.intervalCount=0;this.ctCount=0;const drain=duration(this.p.dtd);this.drainUntil=Number.isFinite(drain)?this.now+drain:this.now;const fd=duration(this.p.FFd);this.fanUntil=Number.isFinite(fd)?this.now+fd:this.now;this.emit('def:'+reason,'Fin de desescarche ('+reason+')');this.evaluate();return true;}
+ stopDefrost(reason){if(!this.def)return false;this.def=false;this.dfRelay=false;this.firstDef=false;this.lastDefEnd=this.now;this.intervalCount=0;const drain=duration(this.p.dtd);this.drainUntil=Number.isFinite(drain)?this.now+drain:this.now;const fd=duration(this.p.FFd);this.fanUntil=Number.isFinite(fd)?this.now+fd:this.now;this.emit('def:'+reason,'Fin de desescarche ('+reason+')');this.evaluate();return true;}
  demand(){const temp=this.reading('P1');if(!this.powered||temp===null)return false;
  const sp=Number(this.p.SP),rd=Number(this.p.rd);
  if(this.p.rHC==='H')return this.comp?temp<sp:temp<=sp-rd;
@@ -48,7 +47,7 @@ class Plant {
  this.comp=ok;
  this.reason=ok?'':(this.now<this.drainUntil?'Goteo dtd':'Protección PP1 / PP2 / PP3 / Pod');
  }else this.reason='';
- if(this.comp!==previous){this.emit(this.comp?'comp:on':'comp:off',this.comp?'Compresor conectado':'Compresor desconectado');if(this.comp)this.lastStart=this.now;else{this.lastStop=this.now;this.compOffSince=this.now;this.lastOffReason='setpoint';}}
+ if(this.comp!==previous){this.emit(this.comp?'comp:on':'comp:off',this.comp?'Compresor conectado':'Compresor desconectado');if(this.comp)this.lastStart=this.now;else{this.lastStop=this.now;this.compOffSince=this.now;}}
  const ep=this.ep();if(ep!==null){
  const high=Number(this.p.FFL),low=Number(this.p.FLF),hys=Number(this.p.FdF);
  if(this.fanBlocked){if(ep<=high-hys&&ep>=low+hys)this.fanBlocked=false;}else if(ep>high||ep<low)this.fanBlocked=true;
@@ -66,7 +65,6 @@ class Plant {
  }
  advance(seconds){const n=Math.min(7200,Math.max(0,Math.floor(Number(seconds)||0)));for(let i=0;i<n;i++){
  this.now++;
- if(this.comp)this.ctCount++;
  if(!this.def&&this.powered&&this.p.ddC!=='cL'&&this.p.ddi!=='oF'){
  const first=this.firstDef;
  const limit=first?(this.p.dSd==='oF'?0:interval(this.p.dSd)):interval(this.p.ddi);
