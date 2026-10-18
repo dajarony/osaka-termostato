@@ -3,7 +3,7 @@
 const {catalog,Plant,Panel,lessons}=root.F30;
 const $=id=>document.getElementById(id);
 const safe=v=>String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-let plant=new Plant(),panel=new Panel(plant),lesson=null,gradeMessage='',playing=null,idleTimer=null,keyDown=null,holdTimer=null,passed=new Set();
+let plant=new Plant(),panel=new Panel(plant),lesson=null,playing=null,idleTimer=null,keyDown=null,holdTimer=null,passed=new Set();
 try{passed=new Set(JSON.parse(localStorage.getItem('f30-lessons-v3')||'[]'));}catch(e){}
 try{const saved=JSON.parse(localStorage.getItem('f30-params-v3')||'{}');for(const [code,value] of Object.entries(saved))if(catalog.byCode[code])plant.setParam(code,value);}catch(e){}
 const secText=n=>String(Math.floor(n/3600)).padStart(2,'0')+':'+String(Math.floor(n%3600/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');
@@ -49,7 +49,7 @@ function prepare(){
  const id=$('lesson').value;lesson=lessons.find(x=>x.id===id);
  plant=new Plant();panel=new Panel(plant);if(lesson.env)for(const [k,v]of Object.entries(lesson.env))plant.setSensor(k,v);
  panel.note='Ejercicio preparado. Programa solo desde SET y las flechas.';
- panel.view='auto';gradeMessage='';$('hintbox').hidden=true;$('gradebox').textContent='Configuración inicial cargada. Realiza los objetivos desde el termostato.';$('gradebox').classList.remove('good');
+ panel.view='auto';$('hintbox').hidden=true;$('gradebox').textContent='Configuración inicial cargada. Realiza los objetivos desde el termostato.';$('gradebox').classList.remove('good');
  repaint();
 }
 function grade(){if(!lesson)return;const checks=lesson.goals.map(([,fn])=>{try{return !!fn({plant,panel});}catch(e){return false;}});const count=checks.filter(Boolean).length;
