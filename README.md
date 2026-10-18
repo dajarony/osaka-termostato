@@ -29,3 +29,9 @@ Programa desde el equipo: `SP=15`, `rd=4`, `rHC=C`, `iP2=EP`, `ddC=rt`, `ddi=-5`
 Ejecuta `node --test tests/*.test.cjs` y revisa la pestaña Actions.
 
 **Alcance**: simulación pedagógica; **no reproduce aún el firmware completo** y no sustituye controles de seguridad ni protege un compresor real. Documentación OSAKA: [Manual F30](https://www.automatizacionesaep.es/wp-content/Info-tecnica/OSAKA/F30.pdf).
+
+## Guía de botones independiente
+
+Desde la parte superior del simulador, abre **⌨ Guía de botones y desescarche**, o entra directamente en `guia-botones.html`. Es una página independiente que incluye ocho recetas con teclas resaltadas, duraciones de pulsación y comprobaciones paso a paso: desescarche manual, vaso de agua 13→17 °C, automático -5 minutos y dde=2, compresor 19→15, ventilador, Pr2, lectura de sondas y guardado. También incorpora un **buscador de 72 parámetros** que calcula la ruta con pulsaciones breves desde `SLS`, según el orden del catálogo del simulador.
+
+La guía **no modifica la programación del F30 ni el estado del simulador**: enseña el camino, y tú lo realizas en el termostato. El número de flechas para ajustar un valor depende del valor inicial; no existe una cuenta universal sin conocerlo.
