@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07111b">
+<title>Guía de botones · OSAKA F30</title>
+<meta name="description" content="Guía visual paso a paso de las teclas y parámetros del OSAKA F30: desescarche manual, automático, consigna, ventilador y sondas.">
+<link rel="stylesheet" href="./src/ui/styles.css">
+<link rel="stylesheet" href="./src/ui/guide.css">
+</head>
+<body>
+<header class="top">
+ <div class="brand">AURA / LABORATORIO FRIGORÍFICO</div>
+ <nav class="topright" aria-label="Navegación">
+  <a class="guide-nav current" href="./guia-botones.html" aria-current="page">⌨ Guía de botones</a>
+  <a class="guide-nav" href="./index.html">↗ Abrir simulador</a>
+  <a class="manualnav" href="https://www.automatizacionesaep.es/wp-content/Info-tecnica/OSAKA/F30.pdf" target="_blank" rel="noopener">Manual F30 ↗</a>
+ </nav>
+</header>
+<main class="guide-main">
+ <section class="guide-intro">
+  <div>
+   <div class="eyebrow">ESCUELA DE MANIOBRAS · AYUDA INTERACTIVA</div>
+   <h1>¿Qué botones tengo <em>que pulsar?</em></h1>
+   <p>Elige una función y sigue las teclas en orden. Esta guía explica cómo manejar <strong>nuestro simulador del OSAKA F30</strong> y cómo comprobar el resultado con las sondas.</p>
+  </div>
+  <a class="launch" href="./index.html">Ir al termostato <span aria-hidden="true">↗</span></a>
+ </section>
+ <div class="guide-layout">
+  <aside class="recipe-panel" aria-label="Seleccionar maniobra">
+   <h2>1 · ¿Qué quieres hacer?</h2>
+   <div id="recipe-list" class="recipe-list"></div>
+   <div class="scope-note"><strong>Importante</strong><p>La guía es orientativa para el entrenador. Algunas configuraciones pueden cambiar según el firmware del F30. Para una instalación real verifica el manual y el equipo.</p></div>
+  </aside>
+  <section class="instruction-panel" aria-live="polite" aria-atomic="false">
+   <div class="instruction-head">
+    <div><div class="eyebrow" id="recipe-tag">MANIOBRA</div><h2 id="recipe-title">Desescarche manual</h2><p id="recipe-desc"></p></div>
+    <button class="reset-steps" id="reset-steps" type="button">↻ Empezar de nuevo</button>
+   </div>
+   <div class="visual-keyboard" aria-label="Referencia de teclas OSAKA F30">
+    <div class="visual-brand">OSAKA <small>◈</small></div>
+    <div class="visual-lower"><div class="visual-lcd"><small id="lcd-caption">PANEL DEL F30</small><strong id="lcd-readout">13.0</strong><span id="lcd-hint">Guía de teclas · no modifica la simulación</span></div>
+    <div class="visual-buttons">
+      <div class="visual-button" data-guide-key="POWER"><span>⏻</span><small>SALIR</small></div>
+      <div class="visual-button" data-guide-key="UP"><span>⇑</span><small>SUBIR</small></div>
+      <div class="visual-button" data-guide-key="SET"><span>set</span><small>SET</small></div>
+      <div class="visual-button" data-guide-key="DOWN"><span>⇓</span><small>BAJAR</small></div>
+    </div></div><span class="visual-model">F 30</span>
+   </div>
+   <div class="stepheading"><h3>2 · Pulsa en este orden</h3><span id="step-count">0 de 0 pasos</span></div>
+   <div id="steps" class="steps"></div>
+   <div class="actions"><button id="step-next" type="button" class="go-button">Hecho, siguiente paso →</button><button id="step-back" type="button" class="subtle-button">← Anterior</button></div>
+   <div id="result-box" class="result-box"></div>
+  </section>
+ </div>
+ <section class="parameter-finder" id="buscar-parametro">
+  <div class="finder-head"><div><div class="eyebrow">BUSCADOR DE LOS 72 CÓDIGOS</div><h2>¿Quieres llegar a otro parámetro?</h2><p>Selecciona un código y verás la combinación de botones <b>desde la primera posición SLS de nuestro simulador</b>.</p></div></div>
+  <div class="finder-controls"><label for="param-search">Buscar código o función<input id="param-search" type="search" placeholder="Ej.: ddi, ventilador, diferencial, desescarche..."></label><label for="param-select">Parámetro<select id="param-select"></select></label></div>
+  <div id="parameter-route" class="parameter-route" aria-live="polite"></div>
+  <div class="finder-foot">La cantidad de pulsaciones corresponde al <strong>orden actual del simulador</strong>; en el dispositivo físico fíjate siempre en el código mostrado. Mantener pulsada una flecha acelera el desplazamiento, por eso el número solo es exacto para toques breves.</div>
+ </section>
+ <footer>Entrenamiento sin conexión al equipo físico ni manejo de tensión eléctrica. <a href="./index.html">Volver al simulador</a>.</footer>
+</main>
+<script defer src="./src/domain/catalog.js"></script>
+<script defer src="./src/ui/guide.js"></script>
+</body>
+</html>
