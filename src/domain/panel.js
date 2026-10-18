@@ -5,7 +5,6 @@ const catalog=root.F30.catalog;
 class Panel {
  constructor(plant){this.plant=plant;this.mode='normal';this.index=0;this.current=null;this.draft=null;this.view='auto';this.note='Listo para operar';this.pwd=0;}
  code(){return catalog.defs[this.index].code;}
- modeName(){return {normal:'Lectura normal',quick:'Consigna rápida',browse:'Menú de parámetros',edit:'Edición de parámetro',password:'Introducir contraseña'}[this.mode];}
  exit(){this.mode='normal';this.current=null;this.draft=null;this.note='Volviendo a medida normal';}
  idle(){if(this.mode!=='normal')this.exit();}
  press(key,seconds=0.1){
@@ -47,7 +46,7 @@ class Panel {
   if(this.mode==='browse')return {text:this.code(),label:'PARÁMETRO '+catalog.defs[this.index].id+' / 72'};
   if(this.mode==='edit'||this.mode==='quick')return {text:this.draft,label:this.current+' · EDITANDO'};
   if(this.mode==='password')return {text:this.pwd,label:'r.P · CONTRASEÑA'};
-  const ep=this.plant.epId(),id=this.plant.p.idS;
+  const id=this.plant.p.idS;
   let key=this.view==='auto'?(id==='P2'||id==='P3'?id:id==='SP'?'SP':'P1'):this.view;
   if(key==='SP')return {text:this.plant.p.SP,label:'SP · CONSIGNA'};
   if(this.plant.fail[key])return {text:'E'+key.slice(1),label:'SONDA EN ERROR'};
