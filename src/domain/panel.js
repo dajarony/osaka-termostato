@@ -34,7 +34,7 @@ class Panel {
    return;
   }
   if(this.mode==='quick'||this.mode==='edit'){
-   if(key==='UP'||key==='DOWN'){const d=catalog.byCode[this.current];this.draft=catalog.step(d,this.draft,key==='UP'?1:-1,this.plant.p.iuP);return;}
+   if(key==='UP'||key==='DOWN'){const d=catalog.byCode[this.current];const repeats=seconds>=.5?Math.min(250,1+Math.floor((seconds-.35)*32)):1;for(let i=0;i<repeats;i++)this.draft=catalog.step(d,this.draft,key==='UP'?1:-1,this.plant.p.iuP);return;}
    if(key==='SET'){
      const success=this.plant.setParam(this.current,this.draft);
      this.note=success?(this.current+' guardado: '+String(this.plant.p[this.current])):('Valor inválido o incompatible: '+this.current);
