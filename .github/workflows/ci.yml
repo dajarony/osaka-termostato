@@ -1,0 +1,17 @@
+name: F30 ECA checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax and invariants
+        run: |
+          for f in src/domain/*.js src/training/*.js src/ui/*.js; do node --check "$f"; done
+          node --test tests/*.test.cjs
