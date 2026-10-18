@@ -56,7 +56,7 @@ class Plant {
  let fanWanted=this.comp;
  if(!this.comp&&this.p.Ftn!=='oF'){
  const on=duration(this.p.Ftn),off=duration(this.p.FtF);
- fanWanted=!Number.isFinite(off)||this.now-this.compOffSince%(on+off)<on;
+ fanWanted=!Number.isFinite(off)||((this.now-this.compOffSince)%(on+off))<on;
  }
  if(this.def)fanWanted=this.p.FFE==='on';if(this.now<this.fanUntil||this.fanBlocked||!this.powered||this.digital&&[2,-2,3,-3].includes(Number(this.p.iFi)))fanWanted=false;
  if(this.fan!==fanWanted){this.fan=fanWanted;this.emit(this.fan?'fan:on':'fan:off','Ventilador '+(this.fan?'activo':'parado'));}
